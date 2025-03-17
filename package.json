@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@expo-google-fonts/raleway": "^0.2.3",
+    "@expo-google-fonts/work-sans": "^0.2.3",
+    "expo-font": "^13.0.4",
+    "expo-router": "^4.0.18",
+    "expo-splash-screen": "^0.29.22",
+    "expo-status-bar": "^2.0.1",
+    "next": "15.2.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.2.0"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "typescript": "^5",
