@@ -1,14 +1,14 @@
 import { PaymentsOverview } from "@/components/Charts/payments-overview";
 import { UsedDevices } from "@/components/Charts/used-devices";
 import { WeeksProfit } from "@/components/Charts/weeks-profit";
-import { TopChannels } from "@/components/Tables/top-channels";
-import { TopChannelsSkeleton } from "@/components/Tables/top-channels/skeleton";
 import { createTimeFrameExtractor } from "@/utils/timeframe-extractor";
 import { Suspense } from "react";
-import { ChatsCard } from "./_components/chats-card";
+//import { ChatsCard } from "./_components/chats-card";
 //import { OverviewCardsGroup } from "./_components/overview-cards";
 //import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
 import { RegionLabels } from "./_components/region-labels";
+import { TopProducts } from "@/components/Tables/top-products";
+import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
 
 type PropsType = {
   searchParams: Promise<{
@@ -41,6 +41,12 @@ export default async function Home({ searchParams }: PropsType) {
           className="col-span-12 xl:col-span-5"
         />
 
+        <div className="col-span-12 grid">
+          <Suspense fallback={<TopProductsSkeleton />}>
+            <TopProducts />
+          </Suspense>
+        </div>
+
         <UsedDevices
           className="col-span-12 xl:col-span-5"
           key={extractTimeFrame("used_devices")}
@@ -49,15 +55,11 @@ export default async function Home({ searchParams }: PropsType) {
 
         <RegionLabels />
 
-        <div className="col-span-12 grid xl:col-span-8">
-          <Suspense fallback={<TopChannelsSkeleton />}>
-            <TopChannels />
-          </Suspense>
-        </div>
+        {/*Chat Suspense card*/}
 
-        <Suspense fallback={null}>
-          <ChatsCard />
-        </Suspense>
+        {/*<Suspense fallback={null}>*/}
+        {/*  <ChatsCard />*/}
+        {/*</Suspense>*/}
       </div>
     </>
   );

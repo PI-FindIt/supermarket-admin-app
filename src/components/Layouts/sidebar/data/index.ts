@@ -1,15 +1,16 @@
 import * as Icons from "../icons";
+import * as Lucide from "lucide-react";
 
 export const NAV_DATA = [
   {
     label: "MAIN MENU",
     items: [
       {
-        title: "Dashboard",
-        icon: Icons.HomeIcon,
+        title: "Summary",
+        icon: Lucide.BarChart,
         items: [
           {
-            title: "eCommerce",
+            title: "Mercadona",
             url: "/",
           },
         ],
@@ -21,7 +22,7 @@ export const NAV_DATA = [
         items: [],
       },
       {
-        title: "Profile",
+        title: "Account settings",
         url: "/profile",
         icon: Icons.User,
         items: [],
