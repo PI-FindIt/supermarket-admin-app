@@ -22,14 +22,14 @@ export function PaymentsOverviewChart({ data }: PropsType) {
     legend: {
       show: false,
     },
-    colors: ["#5750F1", "#0ABEF9"],
+    colors: ["#FA784B", "#FE50D1"],
     chart: {
       height: 310,
       type: "area",
       toolbar: {
         show: false,
       },
-      fontFamily: "inherit",
+      fontFamily: "Poppins, sans-serif",
     },
     fill: {
       gradient: {
@@ -71,17 +71,11 @@ export function PaymentsOverviewChart({ data }: PropsType) {
       enabled: false,
     },
     tooltip: {
-      marker: {
-        show: true,
-      },
+      marker: { show: true },
     },
     xaxis: {
-      axisBorder: {
-        show: false,
-      },
-      axisTicks: {
-        show: false,
-      },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
     },
   };
 
@@ -91,11 +85,11 @@ export function PaymentsOverviewChart({ data }: PropsType) {
         options={options}
         series={[
           {
-            name: "Received",
+            name: "Higher Price",
             data: data.received,
           },
           {
-            name: "Due",
+            name: "Lower Price",
             data: data.due,
           },
         ]}
