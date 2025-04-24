@@ -12,6 +12,9 @@ import NextTopLoader from "nextjs-toploader";
 import type { PropsWithChildren } from "react";
 import { Providers } from "./providers";
 
+import { ApolloProvider } from '@apollo/client';
+import { apolloClient } from '@/lib/apolloClient';
+
 export const metadata: Metadata = {
   title: {
     template: "%s | FindIt - SM Dashboard",
@@ -20,7 +23,9 @@ export const metadata: Metadata = {
   description:"FindIt - Supermarket Administrator Dashboard Management",
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({
+    children,
+ }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
