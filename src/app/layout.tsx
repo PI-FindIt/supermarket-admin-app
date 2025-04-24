@@ -12,8 +12,7 @@ import NextTopLoader from "nextjs-toploader";
 import type { PropsWithChildren } from "react";
 import { Providers } from "./providers";
 
-import { ApolloProvider } from '@apollo/client';
-import { apolloClient } from '@/lib/apolloClient';
+import { ApolloProviders } from '@/providers/ApolloProvider';
 
 export const metadata: Metadata = {
   title: {
@@ -28,7 +27,8 @@ export default function RootLayout({
  }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <ApolloProviders>
+        <body>
         <Providers>
           <NextTopLoader color="#5750F1" showSpinner={false} />
 
@@ -44,7 +44,8 @@ export default function RootLayout({
             </div>
           </div>
         </Providers>
-      </body>
+        </body>
+      </ApolloProviders>
     </html>
   );
 }
