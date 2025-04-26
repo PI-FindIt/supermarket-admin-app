@@ -9,11 +9,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { TopProductsSkeleton} from "@/components/Tables/top-products/skeleton";
-import { useQuery, gql} from "@apollo/client";
+import { useQuery} from "@apollo/client";
+import { gql } from "@/../graphql/gql";
 
-const GET_TOP_PRODUCTS = gql`
-    query GetTopProducts {
-        supermarket(id: 2) { 
+const GET_TOP_PRODUCTS = gql(`
+    query GetTopProducts($supermarketId: Int!){
+        supermarket(id: $supermarketId) { 
             products {
                 price
                 product {
@@ -24,28 +25,15 @@ const GET_TOP_PRODUCTS = gql`
             }
         }
     }
-`;
-
-interface Product {
-  ean: string;
-  brandName: string;
-  categoryName: string;
-}
-
-interface ProductItem {
-  price: number;
-  product: Product;
-}
-
-interface QueryResult {
-  supermarket: {
-    products: ProductItem[];
-  };
-}
+`);
 
 
 export function TopProducts() {
-  const { data, loading, error } = useQuery<QueryResult>(GET_TOP_PRODUCTS);
+  const { data, loading, error } = useQuery(GET_TOP_PRODUCTS, {
+    variables: {
+      supermarketId: Number(2),
+    }
+  });
 
   if (loading) return <TopProductsSkeleton />;
   if (error) return <div>Error: {error.message}</div>;

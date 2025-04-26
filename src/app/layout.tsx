@@ -10,9 +10,8 @@ import { Header } from "@/components/Layouts/header";
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import type { PropsWithChildren } from "react";
-import { Providers } from "./providers";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
-import { ApolloProviders } from '@/providers/ApolloProvider';
 
 export const metadata: Metadata = {
   title: {
@@ -22,14 +21,18 @@ export const metadata: Metadata = {
   description:"FindIt - Supermarket Administrator Dashboard Management",
 };
 
+const client = new ApolloClient({
+  uri: "https://localhost",
+  cache: new InMemoryCache(),
+});
+
 export default function RootLayout({
     children,
  }: PropsWithChildren) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <ApolloProviders>
+    <ApolloProvider client={client}>
+      <html lang="en" suppressHydrationWarning>
         <body>
-        <Providers>
           <NextTopLoader color="#5750F1" showSpinner={false} />
 
           <div className="flex min-h-screen">
@@ -43,9 +46,8 @@ export default function RootLayout({
               </main>
             </div>
           </div>
-        </Providers>
         </body>
-      </ApolloProviders>
-    </html>
+      </html>
+    </ApolloProvider>
   );
 }
