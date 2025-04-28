@@ -7,7 +7,7 @@ import { Suspense } from "react";
 //import { OverviewCardsGroup } from "./_components/overview-cards";
 //import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
 import { RegionLabels } from "./_components/region-labels";
-import { TopProducts } from "@/components/Tables/top-products";
+import  TopProducts  from "@/components/Tables/top-products";
 import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
 
 type PropsType = {

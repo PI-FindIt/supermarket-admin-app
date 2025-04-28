@@ -8,13 +8,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TopProductsSkeleton} from "@/components/Tables/top-products/skeleton";
-import { useQuery} from "@apollo/client";
+import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
+import { useQuery } from "@apollo/client";
 import { gql } from "@/../graphql/gql";
 
 const GET_TOP_PRODUCTS = gql(`
     query GetTopProducts($supermarketId: Int!){
-        supermarket(id: $supermarketId) { 
+        supermarket(id: $supermarketId) {
             products {
                 price
                 product {
@@ -27,12 +27,9 @@ const GET_TOP_PRODUCTS = gql(`
     }
 `);
 
-
 export function TopProducts() {
   const { data, loading, error } = useQuery(GET_TOP_PRODUCTS, {
-    variables: {
-      supermarketId: Number(2),
-    }
+    variables: { supermarketId: 2 },
   });
 
   if (loading) return <TopProductsSkeleton />;
@@ -77,11 +74,8 @@ export function TopProducts() {
               <TableCell className="flex min-w-fit items-center gap-3 pl-5 sm:pl-6 xl:pl-7.5">
                 <div>{product.brandName}</div>
               </TableCell>
-
               <TableCell>{product.category}</TableCell>
-
               <TableCell>${product.price}</TableCell>
-
             </TableRow>
           ))}
         </TableBody>
@@ -89,3 +83,5 @@ export function TopProducts() {
     </div>
   );
 }
+
+export default TopProducts;

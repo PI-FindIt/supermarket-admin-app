@@ -14,10 +14,10 @@ import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-  "\n    query GetTopProducts($supermarketId: Int!){\n        supermarket(id: $supermarketId) { \n            products {\n                price\n                product {\n                    ean\n                    brandName\n                    categoryName\n                }\n            }\n        }\n    }\n": typeof types.GetTopProductsDocument;
+  "\n    query GetTopProducts($supermarketId: Int!){\n        supermarket(id: $supermarketId) {\n            products {\n                price\n                product {\n                    ean\n                    brandName\n                    categoryName\n                }\n            }\n        }\n    }\n": typeof types.GetTopProductsDocument;
 };
 const documents: Documents = {
-  "\n    query GetTopProducts($supermarketId: Int!){\n        supermarket(id: $supermarketId) { \n            products {\n                price\n                product {\n                    ean\n                    brandName\n                    categoryName\n                }\n            }\n        }\n    }\n":
+  "\n    query GetTopProducts($supermarketId: Int!){\n        supermarket(id: $supermarketId) {\n            products {\n                price\n                product {\n                    ean\n                    brandName\n                    categoryName\n                }\n            }\n        }\n    }\n":
     types.GetTopProductsDocument,
 };
 
@@ -39,8 +39,8 @@ export function gql(source: string): unknown;
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(
-  source: "\n    query GetTopProducts($supermarketId: Int!){\n        supermarket(id: $supermarketId) { \n            products {\n                price\n                product {\n                    ean\n                    brandName\n                    categoryName\n                }\n            }\n        }\n    }\n",
-): (typeof documents)["\n    query GetTopProducts($supermarketId: Int!){\n        supermarket(id: $supermarketId) { \n            products {\n                price\n                product {\n                    ean\n                    brandName\n                    categoryName\n                }\n            }\n        }\n    }\n"];
+  source: "\n    query GetTopProducts($supermarketId: Int!){\n        supermarket(id: $supermarketId) {\n            products {\n                price\n                product {\n                    ean\n                    brandName\n                    categoryName\n                }\n            }\n        }\n    }\n",
+): (typeof documents)["\n    query GetTopProducts($supermarketId: Int!){\n        supermarket(id: $supermarketId) {\n            products {\n                price\n                product {\n                    ean\n                    brandName\n                    categoryName\n                }\n            }\n        }\n    }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
