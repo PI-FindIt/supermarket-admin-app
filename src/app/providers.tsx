@@ -2,15 +2,22 @@
 
 import { SidebarProvider } from "@/components/Layouts/sidebar/sidebar-context";
 import { ThemeProvider } from "next-themes";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 
-
-const client = new ApolloClient({
-  uri: "http://localhost",
+const httpLink = createHttpLink({
+  uri: "http://192.168.1.202",
   credentials: 'include',
+  fetchOptions: {
+    mode: "no-cors",
+  },
   headers: {
     "Content-Type": "application/json",
-  },
+  }
+
+});
+
+const client = new ApolloClient({
+  link: httpLink,
   cache: new InMemoryCache(),
   defaultOptions: {
     watchQuery: {
@@ -20,10 +27,7 @@ const client = new ApolloClient({
     query: {
       fetchPolicy: 'network-only',
       errorPolicy: 'all',
-    },
-    mutate: {
-      errorPolicy: 'all',
-    },
+    }
   },
 });
 

@@ -16,12 +16,6 @@ export const NAV_DATA = [
         ],
       },
       {
-        title: "Calendar",
-        url: "/calendar",
-        icon: Icons.Calendar,
-        items: [],
-      },
-      {
         title: "Account settings",
         url: "/profile",
         icon: Icons.User,
@@ -41,56 +35,11 @@ export const NAV_DATA = [
           },
         ],
       },
-      {
-        title: "Tables",
-        url: "/tables",
-        icon: Icons.Table,
-        items: [
-          {
-            title: "Tables",
-            url: "/tables",
-          },
-        ],
-      },
-      {
-        title: "Pages",
-        icon: Icons.Alphabet,
-        items: [
-          {
-            title: "Settings",
-            url: "/pages/settings",
-          },
-        ],
-      },
     ],
   },
   {
-    label: "OTHERS",
+    label: "PROFILE",
     items: [
-      {
-        title: "Charts",
-        icon: Icons.PieChart,
-        items: [
-          {
-            title: "Basic Chart",
-            url: "/charts/basic-chart",
-          },
-        ],
-      },
-      {
-        title: "UI Elements",
-        icon: Icons.FourCircle,
-        items: [
-          {
-            title: "Alerts",
-            url: "/ui-elements/alerts",
-          },
-          {
-            title: "Buttons",
-            url: "/ui-elements/buttons",
-          },
-        ],
-      },
       {
         title: "Authentication",
         icon: Icons.Authentication,
