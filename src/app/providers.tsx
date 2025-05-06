@@ -5,7 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 
 const httpLink = createHttpLink({
-  uri: "http://192.168.1.200",
+  uri: "http://192.168.40.43",
   credentials: 'same-origin',
   headers: {
     "Content-Type": "application/json",
