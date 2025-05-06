@@ -5,11 +5,8 @@ import { ThemeProvider } from "next-themes";
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 
 const httpLink = createHttpLink({
-  uri: "http://192.168.1.202",
-  credentials: 'include',
-  fetchOptions: {
-    mode: "no-cors",
-  },
+  uri: "http://192.168.1.200",
+  credentials: 'same-origin',
   headers: {
     "Content-Type": "application/json",
   }
