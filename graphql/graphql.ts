@@ -529,34 +529,45 @@ export type UserInput = {
   preferences?: InputMaybe<PreferencesInput>;
 };
 
-export type GetTopProductsQueryVariables = Exact<{
+export type Get_Supermarket_LocationsQueryVariables = Exact<{
   supermarketId: Scalars["Int"]["input"];
 }>;
 
-export type GetTopProductsQuery = {
+export type Get_Supermarket_LocationsQuery = {
   __typename?: "Query";
   supermarket?: {
     __typename?: "Supermarket";
-    products: Array<{
-      __typename?: "ProductWithPrice";
-      price: number;
-      product: {
-        __typename?: "Product";
-        ean: string;
-        brandName?: string | null;
-        categoryName?: string | null;
-      };
+    locations: Array<{
+      __typename?: "SupermarketLocation";
+      latitude: number;
+      longitude: number;
+      name?: string | null;
     }>;
   } | null;
 };
 
-export const GetTopProductsDocument = {
+export type Get_Top_ProductsQueryVariables = Exact<{
+  limit: Scalars["Int"]["input"];
+}>;
+
+export type Get_Top_ProductsQuery = {
+  __typename?: "Query";
+  products: Array<{
+    __typename?: "Product";
+    ean: string;
+    brandName?: string | null;
+    categoryName?: string | null;
+    quantity: string;
+  }>;
+};
+
+export const Get_Supermarket_LocationsDocument = {
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "query",
-      name: { kind: "Name", value: "GetTopProducts" },
+      name: { kind: "Name", value: "GET_SUPERMARKET_LOCATIONS" },
       variableDefinitions: [
         {
           kind: "VariableDefinition",
@@ -591,32 +602,19 @@ export const GetTopProductsDocument = {
               selections: [
                 {
                   kind: "Field",
-                  name: { kind: "Name", value: "products" },
+                  name: { kind: "Name", value: "locations" },
                   selectionSet: {
                     kind: "SelectionSet",
                     selections: [
-                      { kind: "Field", name: { kind: "Name", value: "price" } },
                       {
                         kind: "Field",
-                        name: { kind: "Name", value: "product" },
-                        selectionSet: {
-                          kind: "SelectionSet",
-                          selections: [
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "ean" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "brandName" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "categoryName" },
-                            },
-                          ],
-                        },
+                        name: { kind: "Name", value: "latitude" },
                       },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "longitude" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
                     ],
                   },
                 },
@@ -627,4 +625,64 @@ export const GetTopProductsDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<GetTopProductsQuery, GetTopProductsQueryVariables>;
+} as unknown as DocumentNode<
+  Get_Supermarket_LocationsQuery,
+  Get_Supermarket_LocationsQueryVariables
+>;
+export const Get_Top_ProductsDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GET_TOP_PRODUCTS" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "limit" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: { kind: "NamedType", name: { kind: "Name", value: "Int" } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "products" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "limit" },
+                value: {
+                  kind: "Variable",
+                  name: { kind: "Name", value: "limit" },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "ean" } },
+                { kind: "Field", name: { kind: "Name", value: "brandName" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "categoryName" },
+                },
+                { kind: "Field", name: { kind: "Name", value: "quantity" } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  Get_Top_ProductsQuery,
+  Get_Top_ProductsQueryVariables
+>;

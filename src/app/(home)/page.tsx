@@ -4,8 +4,9 @@ import StoreLayout from "@/components/ImageLayout/index";
 import { WeeksProfit } from "@/components/Charts/weeks-profit";
 import { createTimeFrameExtractor } from "@/utils/timeframe-extractor";
 import { Suspense } from "react";
-import  TopProducts  from "@/components/Tables/top-products";
+import TopProducts from "@/components/Tables/top-products";
 import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
+import DynamicMap from "@/components/DynamicMap";
 
 type PropsType = {
   searchParams: Promise<{
@@ -47,6 +48,8 @@ export default async function Home({ searchParams }: PropsType) {
         <StoreLayout
           className="col-span-12 xl:col-span-7"
         />
+
+        <DynamicMap />
       </div>
     </>
   );

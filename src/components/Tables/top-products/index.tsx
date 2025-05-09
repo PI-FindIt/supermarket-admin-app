@@ -13,33 +13,29 @@ import { useQuery } from "@apollo/client";
 import { gql } from "@/../graphql/gql";
 
 const GET_TOP_PRODUCTS = gql(`
-    query GetTopProducts($supermarketId: Int!){
-        supermarket(id: $supermarketId) { 
-            products {
-                price
-                product {
-                    ean 
-                    brandName
-                    categoryName
-                }
-            }
-        }
-    }
+    query GET_TOP_PRODUCTS($limit: Int!) {
+      products(limit: $limit) {
+        ean
+        brandName
+        categoryName
+        quantity
+      }
+}
 `);
 
 export function TopProducts() {
   const { data, loading, error } = useQuery(GET_TOP_PRODUCTS, {
-    variables: { supermarketId: 2 },
+    variables: { limit: 10 },
   });
 
   if (loading) return <TopProductsSkeleton />;
   if (error) return <div>Error: {error.message}</div>;
 
-  const tableData = data?.supermarket?.products.map(item => ({
-    brandName: item.product.brandName,
-    category: item.product.categoryName,
-    price: item.price,
-    ean: item.product.ean
+  const tableData = data?.products.map(item => ({
+    brandName: item.brandName,
+    category: item.categoryName,
+    quantity: item.quantity,
+    ean: item.ean,
   })) || [];
 
   return (
@@ -54,13 +50,12 @@ export function TopProducts() {
         <TableHeader>
           <TableRow className="border-t text-base [&>th]:h-auto [&>th]:py-3 sm:[&>th]:py-4.5">
             <TableHead className="min-w-[120px] pl-5 sm:pl-6 xl:pl-7.5">
-              Product Name
+              Product
             </TableHead>
             <TableHead>Category</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead>Sold</TableHead>
+            <TableHead>Quantity</TableHead>
             <TableHead className="pr-5 text-right sm:pr-6 xl:pr-7.5">
-              Profit
+              EAN
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -75,7 +70,8 @@ export function TopProducts() {
                 <div>{product.brandName}</div>
               </TableCell>
               <TableCell>{product.category}</TableCell>
-              <TableCell>${product.price}</TableCell>
+              <TableCell>{product.quantity}</TableCell>
+              <TableCell className="text-right">{product.ean}</TableCell>
             </TableRow>
           ))}
         </TableBody>
