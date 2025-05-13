@@ -13,6 +13,7 @@ const GET_SUPERMARKET_LOCATIONS = gql(`
   query GET_SUPERMARKET_LOCATIONS($supermarketId: Int!) {
     supermarket(id: $supermarketId) {
       locations {
+        id
         latitude
         longitude
         name
@@ -36,10 +37,10 @@ export default function SupermarketMap() {
   if (loading) return <div>Loading map...</div>;
   if (error) return <div>Error loading map: {error.message}</div>;
 
-  const locations = data?.supermarket?.locations || [];
+  const locations = data?.supermarket?.locations ?? [];
 
   // Portugal center coordinates
-  const CENTER_POSITION = [39.5, -8];
+  const CENTER_POSITION: [number, number] = [39.5, -8];
   const ZOOM_LEVEL = 7;
 
   return (
@@ -58,9 +59,9 @@ export default function SupermarketMap() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {locations.map((location, index) => (
+          {locations.map((location) => (
             <Marker
-              key={index}
+              key={location.id}
               position={[location.latitude, location.longitude]}
             >
               {location.name && (

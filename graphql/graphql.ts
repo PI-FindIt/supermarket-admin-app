@@ -539,6 +539,7 @@ export type Get_Supermarket_LocationsQuery = {
     __typename?: "Supermarket";
     locations: Array<{
       __typename?: "SupermarketLocation";
+      id: number;
       latitude: number;
       longitude: number;
       name?: string | null;
@@ -606,6 +607,7 @@ export const Get_Supermarket_LocationsDocument = {
                   selectionSet: {
                     kind: "SelectionSet",
                     selections: [
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "latitude" },
