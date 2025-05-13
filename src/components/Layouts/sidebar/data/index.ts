@@ -37,19 +37,4 @@ export const NAV_DATA = [
       },
     ],
   },
-  {
-    label: "PROFILE",
-    items: [
-      {
-        title: "Authentication",
-        icon: Icons.Authentication,
-        items: [
-          {
-            title: "Sign In",
-            url: "/auth/sign-in",
-          },
-        ],
-      },
-    ],
-  },
 ];
