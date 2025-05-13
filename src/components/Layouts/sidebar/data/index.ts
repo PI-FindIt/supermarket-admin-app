@@ -1,4 +1,3 @@
-import * as Icons from "../icons";
 import * as Lucide from "lucide-react";
 
 export const NAV_DATA = [
@@ -7,7 +6,7 @@ export const NAV_DATA = [
     items: [
       {
         title: "Summary",
-        icon: Lucide.BarChart,
+        icon: Lucide.ChartColumn,
         items: [
           {
             title: "Mercadona",
@@ -16,24 +15,20 @@ export const NAV_DATA = [
         ],
       },
       {
-        title: "Account settings",
-        url: "/profile",
-        icon: Icons.User,
+        title: "Layout",
+        icon: Lucide.LayoutGrid,
         items: [],
       },
       {
-        title: "Forms",
-        icon: Icons.Alphabet,
-        items: [
-          {
-            title: "Form Elements",
-            url: "/forms/form-elements",
-          },
-          {
-            title: "Form Layout",
-            url: "/forms/form-layout",
-          },
-        ],
+        title: "SupermarketInfo",
+        icon: Lucide.FilePlus2,
+        items: [],
+      },
+      {
+        title: "Account settings",
+        url: "/profile",
+        icon: Lucide.UserRound,
+        items: [],
       },
     ],
   },
