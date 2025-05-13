@@ -1,14 +1,13 @@
 "use client";
 import { EmailIcon, PasswordIcon } from "@/assets/icons";
-import Link from "next/link";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
 import { Checkbox } from "../FormElements/checkbox";
 
 export default function SigninWithPassword() {
   const [data, setData] = useState({
-    email: process.env.NEXT_PUBLIC_DEMO_USER_MAIL || "",
-    password: process.env.NEXT_PUBLIC_DEMO_USER_PASS || "",
+    email: process.env.NEXT_PUBLIC_DEMO_USER_MAIL ?? "",
+    password: process.env.NEXT_PUBLIC_DEMO_USER_PASS ?? "",
     remember: false,
   });
 
@@ -70,13 +69,9 @@ export default function SigninWithPassword() {
             })
           }
         />
-
-        <Link
-          href="/auth/forgot-password"
-          className="hover:text-primary dark:text-white dark:hover:text-primary"
-        >
+        <span>
           Forgot Password?
-        </Link>
+        </span>
       </div>
 
       <div className="mb-4.5">

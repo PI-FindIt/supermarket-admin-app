@@ -8,7 +8,7 @@ type PropsType = {
   className?: string;
 };
 
-export async function WeeksProfit({ className, timeFrame }: PropsType) {
+export async function WeeksProfit({ className, timeFrame }: Readonly<PropsType>) {
   const data = await getWeeksProfitData(timeFrame);
 
   return (
@@ -25,7 +25,7 @@ export async function WeeksProfit({ className, timeFrame }: PropsType) {
 
         <PeriodPicker
           items={["this week", "last week"]}
-          defaultValue={timeFrame || "this week"}
+          defaultValue={timeFrame ?? "this week"}
           sectionKey="weeks_profit"
         />
       </div>

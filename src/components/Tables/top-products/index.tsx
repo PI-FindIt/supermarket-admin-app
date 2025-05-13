@@ -36,7 +36,7 @@ export function TopProducts() {
     category: item.categoryName,
     quantity: item.quantity,
     ean: item.ean,
-  })) || [];
+  })) ?? [];
 
   return (
     <div className="rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
