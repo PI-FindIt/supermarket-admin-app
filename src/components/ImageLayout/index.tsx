@@ -8,9 +8,9 @@ type StoreLayoutProps = {
   className?: string;
 };
 
-export default function StoreLayout({ className }: StoreLayoutProps) {
+export default function StoreLayout({ className }: Readonly<StoreLayoutProps>) {
   return (
-    <div className={`grid grid-cols-1 grid-rows-[auto_1fr] gap-9 rounded-[10px] bg-white p-7.5 shadow-1 dark:bg-gray-dark dark:shadow-card ${className || ''}`}>
+    <div className={`grid grid-cols-1 grid-rows-[auto_1fr] gap-9 rounded-[10px] bg-white p-7.5 shadow-1 dark:bg-gray-dark dark:shadow-card ${className ?? ''}`}>
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h2 className="text-body-2xlg font-bold text-dark dark:text-white">
           Store Layout
@@ -30,7 +30,7 @@ export default function StoreLayout({ className }: StoreLayoutProps) {
         </div>
 
         <Link
-          href="/store-layout"
+          href="/"
           className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-2.5 text-white hover:bg-primary/90"
         >
           Details

@@ -10,7 +10,6 @@ export function Logo() {
         fill
         className="dark:hidden"
         alt="FindIt logo"
-        role="presentation"
         quality={100}
       />
 
@@ -19,7 +18,6 @@ export function Logo() {
         fill
         className="hidden dark:block"
         alt="FindIt logo"
-        role="presentation"
         quality={100}
       />
     </div>
