@@ -32,4 +32,15 @@ export const NAV_DATA = [
       },
     ],
   },
+  {
+    label: "",
+    items: [
+      {
+        title: "Log out",
+        icon: Lucide.LogOut,
+        url: "/",
+        items: [],
+      }
+    ]
+  }
 ];

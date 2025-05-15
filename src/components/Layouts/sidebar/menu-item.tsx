@@ -32,7 +32,6 @@ export function MenuItem(
     return (
       <Link
         href={props.href}
-        // Close sidebar on clicking link if it's mobile
         onClick={() => isMobile && toggleSidebar()}
         className={cn(
           menuItemBaseStyles({
