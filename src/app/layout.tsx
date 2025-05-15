@@ -1,5 +1,4 @@
-import "@/css/satoshi.css";
-import "@/css/style.css";
+import "../../global.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "jsvectormap/dist/jsvectormap.css";
 
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
- }: PropsWithChildren) {
+ }: Readonly<PropsWithChildren>) {
   return (
       <html lang="en" suppressHydrationWarning>
         <body>
