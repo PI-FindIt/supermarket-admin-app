@@ -38,7 +38,7 @@ export const NAV_DATA = [
       {
         title: "Log out",
         icon: Lucide.LogOut,
-        url: "/",
+        url: "/auth/sign-in",
         items: [],
       }
     ]

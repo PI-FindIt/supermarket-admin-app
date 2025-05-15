@@ -3,7 +3,7 @@
 import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV_DATA } from "./data";
 import { ArrowLeftIcon, ChevronUp } from "./icons";
@@ -13,6 +13,7 @@ import * as Lucide from "lucide-react";
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { setIsOpen, isOpen, isMobile, toggleSidebar } = useSidebarContext();
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
@@ -37,8 +38,7 @@ export function Sidebar() {
   }, [pathname]);
 
   const handleLogout = () => {
-    // Add your logout logic here
-    console.log("Logging out...");
+    router.push("/auth/sign-in");
   };
 
   return (
@@ -160,8 +160,7 @@ export function Sidebar() {
           <div className="mt-auto border-t border-stroke pt-4 dark:border-dark-3">
             <MenuItem
               className="flex items-center gap-3 py-3"
-              as="link"
-              href="/"
+              as="button"
               isActive={false}
               onClick={handleLogout}
             >
