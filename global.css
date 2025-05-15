@@ -195,7 +195,6 @@ span.flatpickr-weekday,
   @apply !border-gray-2 !bg-gray-2 dark:!border-dark-2 dark:!bg-dark-2;
 }
 
-.flatpickr-day.selected,
 .flatpickr-day.startRange,
 .flatpickr-day.selected,
 .flatpickr-day.endRange {
@@ -467,12 +466,6 @@ span.flatpickr-weekday,
 
 input[type="search"]::-webkit-search-cancel-button {
   @apply appearance-none;
-}
-
-.custom-input-date::-webkit-calendar-picker-indicator {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 20px;
 }
 
 .custom-gradient-1 {
