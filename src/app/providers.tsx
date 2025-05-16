@@ -5,7 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 import { useState, useEffect } from "react";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: Readonly<{ children: React.ReactNode }>) {
   const [client, setClient] = useState<ApolloClient<any> | null>(null);
 
   useEffect(() => {

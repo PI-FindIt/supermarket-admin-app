@@ -10,7 +10,7 @@ export const NAV_DATA = [
         items: [
           {
             title: "Mercadona",
-            url: "/",
+            url: "/dashboard"
           },
         ],
       },
@@ -38,7 +38,7 @@ export const NAV_DATA = [
       {
         title: "Log out",
         icon: Lucide.LogOut,
-        url: "/auth/sign-in",
+        url: "/",
         items: [],
       }
     ]

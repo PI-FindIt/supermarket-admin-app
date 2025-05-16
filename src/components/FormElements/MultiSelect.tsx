@@ -24,11 +24,11 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
       const select = document.getElementById(id) as HTMLSelectElement | null;
       if (select) {
         const newOptions: Option[] = [];
-        for (let i = 0; i < select.options.length; i++) {
+        for (const element of select.options) {
           newOptions.push({
-            value: select.options[i].value,
-            text: select.options[i].innerText,
-            selected: select.options[i].hasAttribute("selected"),
+            value: element.value,
+            text: element.innerText,
+            selected: element.hasAttribute("selected"),
           });
         }
         setOptions(newOptions);
@@ -43,7 +43,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
   };
 
   const isOpen = () => {
-    return show === true;
+    return show;
   };
 
   const select = (index: number, event: React.MouseEvent) => {
@@ -96,15 +96,11 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
 
   return (
     <div className="relative z-50">
-      <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-        Multiselect Dropdown
-      </label>
       <div>
         <select className="hidden" id={id}>
-          <option value="1">Design</option>
-          <option value="2">Development</option>
-          <option value="3">Option 4</option>
-          <option value="4">Option 5</option>
+          <option value="1">Mercadona</option>
+          <option value="2">Pingo Doce</option>
+          <option value="3">Continente</option>
         </select>
 
         <div className="flex flex-col items-center">
@@ -130,8 +126,8 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                             <svg
                               className="fill-current"
                               role="button"
-                              width="12"
-                              height="12"
+                              width="6"
+                              height="6"
                               viewBox="0 0 12 12"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"

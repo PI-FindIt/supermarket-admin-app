@@ -38,7 +38,7 @@ export function Sidebar() {
   }, [pathname]);
 
   const handleLogout = () => {
-    router.push("/auth/sign-in");
+    router.push("/");
   };
 
   return (
