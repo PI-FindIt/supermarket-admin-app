@@ -4,7 +4,6 @@ import { EmailIcon, PasswordIcon } from "@/assets/icons";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
-import { Checkbox } from "../FormElements/checkbox";
 import { Select }  from "../FormElements/select";
 import Image from "next/image";
 
@@ -43,7 +42,7 @@ export default function SigninWithPassword() {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center px-4">
-      <div className="w-full max-w-[440px] rounded-2xl bg-white p-8 shadow-1 dark:bg-gray-dark dark:shadow-card">
+      <div className="w-full max-w-[440px] rounded-2xl bg-white p-12 shadow-1 space-y-8">
         <div className="flex flex-col items-center mb-8">
           <Image
             src={"/images/logo/logo.svg"}
@@ -53,12 +52,23 @@ export default function SigninWithPassword() {
             className="mb-6"
           />
 
-          <h2 className="text-2xl font-bold text-dark dark:text-white sm:text-title-xl2">
+          <h2 className="text-2xl font-bold text-dark ">
             Admin Log-in
           </h2>
         </div>
 
         <form onSubmit={handleSubmit}>
+          <Select
+            label=""
+            items={[
+              { value: "1", label: "Mercadona" },
+              { value: "2", label: "Pingo Doce" },
+              { value: "3", label: "Continente" }
+            ]}
+            placeholder="Choose Supermarket"
+            className="mb-4"
+          />
+
           <InputGroup
             type="email"
             label=""
@@ -90,11 +100,11 @@ export default function SigninWithPassword() {
           <div className="mb-4.5">
             <button
               type="submit"
-              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-orange-400 to-pink-500 p-4 font-bold text-white transition hover:opacity-90"
             >
               Log-in
               {loading && (
-                <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-white border-t-transparent dark:border-primary dark:border-t-transparent" />
+                <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-white border-t-transparent" />
               )}
             </button>
           </div>
