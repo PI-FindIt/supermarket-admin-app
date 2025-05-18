@@ -1,5 +1,5 @@
 export async function getDevicesUsedData(
-  timeFrame?: "monthly" | "yearly" | (string & {}),
+  timeFrame?: "monthly" | "yearly",
 ) {
   // Fake delay
   await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -32,7 +32,7 @@ export async function getDevicesUsedData(
 }
 
 export async function getPaymentsOverviewData(
-  timeFrame?: "monthly" | "yearly" | (string & {}),
+  timeFrame?: "monthly" | "yearly" ,
 ) {
   // Fake delay
   await new Promise((resolve) => setTimeout(resolve, 1000));

@@ -9,7 +9,6 @@ import NextTopLoader from "nextjs-toploader";
 import type { PropsWithChildren } from "react";
 
 import { loadDevMessages, loadErrorMessages } from "@apollo/client/dev";
-import { Providers } from "@/app/providers";
 
 if (process.env.NODE_ENV == "development") {
  loadDevMessages();
@@ -26,21 +25,17 @@ export const metadata: Metadata = {
 
 export default function DashboardLayout({ children }: Readonly<PropsWithChildren>) {
  return (
-   <html lang="en" suppressHydrationWarning>
-     <body>
-       <Providers>
-         <NextTopLoader color="#fa784b" showSpinner={false} />
-         <div className="flex min-h-screen">
-           <Sidebar />
-           <div className="w-full bg-gray-2 dark:bg-[#020d1a]">
-             <Header />
-             <main className="isolate mx-auto w-full max-w-screen-2xl overflow-hidden p-4 md:p-6 2xl:p-10">
-               {children}
-             </main>
-           </div>
-         </div>
-       </Providers>
-     </body>
-   </html>
+   <>
+     <NextTopLoader color="#fa784b" showSpinner={false} />
+     <div className="flex min-h-screen">
+       <Sidebar />
+       <div className="w-full bg-gray-2 dark:bg-[#020d1a]">
+         <Header />
+         <main className="isolate mx-auto w-full max-w-screen-2xl overflow-hidden p-4 md:p-6 2xl:p-10">
+           {children}
+         </main>
+       </div>
+     </div>
+   </>
  );
 }
