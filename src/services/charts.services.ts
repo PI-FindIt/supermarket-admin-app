@@ -6,18 +6,13 @@ export async function getDevicesUsedData(
 
   const data = [
     {
-      name: "Desktop",
-      percentage: 0.65,
-      amount: 1625,
-    },
-    {
       name: "Tablet",
-      percentage: 0.1,
+      percentage: 0.15,
       amount: 250,
     },
     {
       name: "Mobile",
-      percentage: 0.2,
+      percentage: 0.8,
       amount: 500,
     },
     {
@@ -31,7 +26,6 @@ export async function getDevicesUsedData(
     data[0].amount = 19500;
     data[1].amount = 3000;
     data[2].amount = 6000;
-    data[3].amount = 1500;
   }
 
   return data;

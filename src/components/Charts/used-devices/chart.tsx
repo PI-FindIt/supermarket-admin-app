@@ -16,9 +16,9 @@ export function DonutChart({ data }: PropsType) {
   const chartOptions: ApexOptions = {
     chart: {
       type: "donut",
-      fontFamily: "inherit",
+      fontFamily: "Work Sans",
     },
-    colors: ["#5750F1", "#5475E5", "#8099EC", "#ADBCF2"],
+    colors: ["#FE50D1", "#FA784B"],
     labels: data.map((item) => item.name),
     legend: {
       show: true,
@@ -42,7 +42,7 @@ export function DonutChart({ data }: PropsType) {
             total: {
               show: true,
               showAlways: true,
-              label: "Visitors",
+              label: "Users",
               fontSize: "16px",
               fontWeight: "400",
             },

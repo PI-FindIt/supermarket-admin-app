@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Table,
   TableBody,
@@ -6,11 +8,35 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Image from "next/image";
-import { getTopProducts } from "../fetch";
+import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
+import { useQuery } from "@apollo/client";
+import { gql } from "@/../graphql/gql";
 
-export async function TopProducts() {
-  const data = await getTopProducts();
+const GET_TOP_PRODUCTS = gql(`
+    query GET_TOP_PRODUCTS($limit: Int!) {
+      products(limit: $limit) {
+        ean
+        brandName
+        categoryName
+        quantity
+      }
+}
+`);
+
+export function TopProducts() {
+  const { data, loading, error } = useQuery(GET_TOP_PRODUCTS, {
+    variables: { limit: 10 },
+  });
+
+  if (loading) return <TopProductsSkeleton />;
+  if (error) return <div>Error: {error.message}</div>;
+
+  const tableData = data?.products.map(item => ({
+    brandName: item.brandName,
+    category: item.categoryName,
+    quantity: item.quantity,
+    ean: item.ean,
+  })) ?? [];
 
   return (
     <div className="rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
@@ -24,44 +50,28 @@ export async function TopProducts() {
         <TableHeader>
           <TableRow className="border-t text-base [&>th]:h-auto [&>th]:py-3 sm:[&>th]:py-4.5">
             <TableHead className="min-w-[120px] pl-5 sm:pl-6 xl:pl-7.5">
-              Product Name
+              Product
             </TableHead>
             <TableHead>Category</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead>Sold</TableHead>
+            <TableHead>Quantity</TableHead>
             <TableHead className="pr-5 text-right sm:pr-6 xl:pr-7.5">
-              Profit
+              EAN
             </TableHead>
           </TableRow>
         </TableHeader>
 
         <TableBody>
-          {data.map((product) => (
+          {tableData.map((product) => (
             <TableRow
               className="text-base font-medium text-dark dark:text-white"
-              key={product.name + product.profit}
+              key={product.ean}
             >
               <TableCell className="flex min-w-fit items-center gap-3 pl-5 sm:pl-6 xl:pl-7.5">
-                <Image
-                  src={product.image}
-                  className="aspect-[6/5] w-15 rounded-[5px] object-cover"
-                  width={60}
-                  height={50}
-                  alt={"Image for product " + product.name}
-                  role="presentation"
-                />
-                <div>{product.name}</div>
+                <div>{product.brandName}</div>
               </TableCell>
-
               <TableCell>{product.category}</TableCell>
-
-              <TableCell>${product.price}</TableCell>
-
-              <TableCell>{product.sold}</TableCell>
-
-              <TableCell className="pr-5 text-right text-green-light-1 sm:pr-6 xl:pr-7.5">
-                ${product.profit}
-              </TableCell>
+              <TableCell>{product.quantity}</TableCell>
+              <TableCell className="text-right">{product.ean}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -69,3 +79,5 @@ export async function TopProducts() {
     </div>
   );
 }
+
+export default TopProducts;

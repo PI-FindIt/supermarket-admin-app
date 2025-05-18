@@ -7,7 +7,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Satoshi"', ...defaultTheme.fontFamily.sans],
+        sans: ['"Raleway"', ...defaultTheme.fontFamily.sans],
       },
       screens: {
         "2xsm": "375px",
@@ -18,7 +18,31 @@ const config: Config = {
         current: "currentColor",
         transparent: "transparent",
         white: "#FFFFFF",
-        primary: "#5750F1",
+        primary: "#fa784b",
+        primaryVariant: {
+          DEFAULT: "#fff3ed",
+          dark: "#26120B",
+        },
+        secondary: "#fe50d1",
+        secondaryVariant: {
+          DEFAULT: "#feedfa",
+          dark: "#270C20",
+        },
+        black: "#000000",
+        blackVariant: "#000000bb",
+        whiteVariant: "#ffffffbb",
+        background: {
+          DEFAULT: "#ffffff",
+          dark: "#1b1b1b",
+        },
+        text: {
+          DEFAULT: "#000",
+          dark: "#fff",
+        },
+        textVariant: {
+          DEFAULT: "#000000bb",
+          dark: "#ffffffbb",
+        },
         stroke: "#E6EBF1",
         "stroke-dark": "#27303E",
         dark: {

@@ -9,8 +9,7 @@ export function Logo() {
         src={logo}
         fill
         className="dark:hidden"
-        alt="NextAdmin logo"
-        role="presentation"
+        alt="FindIt logo"
         quality={100}
       />
 
@@ -18,8 +17,7 @@ export function Logo() {
         src={darkLogo}
         fill
         className="hidden dark:block"
-        alt="NextAdmin logo"
-        role="presentation"
+        alt="FindIt logo"
         quality={100}
       />
     </div>
