@@ -1,4 +1,4 @@
-import { TrendingUpIcon } from "@/assets/icons";
+import { TrendingUp } from "lucide-react";
 import { compactFormat } from "@/lib/format-number";
 import { cn } from "@/lib/utils";
 import { getCampaignVisitorsData } from "@/services/charts.services";
@@ -34,7 +34,7 @@ export async function CampaignVisitors({ className }: { className?: string }) {
               data.performance > 0 ? "text-green" : "text-red",
             )}
           >
-            <TrendingUpIcon
+            <TrendingUp
               className={`${data.performance > 0 ? "-rotate-6" : "scale-y-[-1]"}`}
             />
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronUpIcon } from "@/assets/icons";
+import { ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useId, useState } from "react";
 
@@ -65,7 +65,7 @@ export function Select({
           ))}
         </select>
 
-        <ChevronUpIcon className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 rotate-180" />
+        <ChevronUp className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 rotate-180" />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { UploadIcon } from "@/assets/icons";
+import { Upload } from "lucide-react";
 import { ShowcaseSection } from "@/components/Layouts/showcase-section";
 import Image from "next/image";
 
@@ -45,7 +45,7 @@ export function UploadPhotoForm() {
             className="flex cursor-pointer flex-col items-center justify-center p-4 sm:py-7.5"
           >
             <div className="flex size-13.5 items-center justify-center rounded-full border border-stroke bg-white dark:border-dark-3 dark:bg-gray-dark">
-              <UploadIcon />
+              <Upload />
             </div>
 
             <p className="mt-2.5 text-body-sm font-medium">

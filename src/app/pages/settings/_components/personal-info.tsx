@@ -1,9 +1,9 @@
 import {
-  CallIcon,
-  EmailIcon,
-  PencilSquareIcon,
-  UserIcon,
-} from "@/assets/icons";
+  Phone,
+  Mail,
+  Pencil,
+  User,
+} from "lucide-react";
 import InputGroup from "@/components/FormElements/InputGroup";
 import { TextAreaGroup } from "@/components/FormElements/InputGroup/text-area";
 import { ShowcaseSection } from "@/components/Layouts/showcase-section";
@@ -20,7 +20,7 @@ export function PersonalInfoForm() {
             label="Full Name"
             placeholder="David Jhon"
             defaultValue="David Jhon"
-            icon={<UserIcon />}
+            icon={<User />}
             iconPosition="left"
             height="sm"
           />
@@ -32,7 +32,7 @@ export function PersonalInfoForm() {
             label="Phone Number"
             placeholder="+990 3343 7865"
             defaultValue={"+990 3343 7865"}
-            icon={<CallIcon />}
+            icon={<Phone />}
             iconPosition="left"
             height="sm"
           />
@@ -45,7 +45,7 @@ export function PersonalInfoForm() {
           label="Email Address"
           placeholder="devidjond45@gmail.com"
           defaultValue="devidjond45@gmail.com"
-          icon={<EmailIcon />}
+          icon={<Mail />}
           iconPosition="left"
           height="sm"
         />
@@ -57,7 +57,7 @@ export function PersonalInfoForm() {
           label="Username"
           placeholder="devidjhon24"
           defaultValue="devidjhon24"
-          icon={<UserIcon />}
+          icon={<User />}
           iconPosition="left"
           height="sm"
         />
@@ -66,7 +66,7 @@ export function PersonalInfoForm() {
           className="mb-5.5"
           label="BIO"
           placeholder="Write your bio here"
-          icon={<PencilSquareIcon />}
+          icon={<Pencil />}
           defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia turpis tortor, consequat efficitur mi congue a. Curabitur cursus, ipsum ut lobortis sodales, enim arcu pellentesque lectus ac suscipit diam sem a felis. Cras sapien ex, blandit eu dui et suscipit gravida nunc. Sed sed est quis dui."
         />
 

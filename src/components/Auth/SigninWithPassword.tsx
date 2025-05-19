@@ -1,6 +1,6 @@
 "use client";
 
-import { EmailIcon, PasswordIcon } from "@/assets/icons";
+import { Mail, KeyRound } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
@@ -77,7 +77,7 @@ export default function SigninWithPassword() {
             name="email"
             handleChange={handleChange}
             value={data.email}
-            icon={<EmailIcon />}
+            icon={<Mail />}
           />
 
           <InputGroup
@@ -88,7 +88,7 @@ export default function SigninWithPassword() {
             name="password"
             handleChange={handleChange}
             value={data.password}
-            icon={<PasswordIcon />}
+            icon={<KeyRound />}
           />
 
           {error && (
