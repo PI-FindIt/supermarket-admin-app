@@ -13,6 +13,7 @@ export async function PaymentsOverview({
   timeFrame = "monthly",
   className,
 }: PropsType) {
+  // @ts-ignore
   const data = await getPaymentsOverviewData(timeFrame);
 
   return (
@@ -35,14 +36,14 @@ export async function PaymentsOverview({
       <dl className="grid divide-stroke text-center dark:divide-dark-3 sm:grid-cols-2 sm:divide-x [&>div]:flex [&>div]:flex-col-reverse [&>div]:gap-1">
         <div className="dark:border-dark-3 max-sm:mb-3 max-sm:border-b max-sm:pb-3">
           <dt className="text-xl font-bold text-dark dark:text-white">
-            ${standardFormat(data.received.reduce((acc, { y }) => acc + y, 0))}
+            {standardFormat(data.received.reduce((acc, { y }) => acc + y, 0))}
           </dt>
           <dd className="font-medium dark:text-dark-6">Month Average Price</dd>
         </div>
 
         <div>
           <dt className="text-xl font-bold text-dark dark:text-white">
-            ${standardFormat(data.due.reduce((acc, { y }) => acc + y, 0))}
+            {standardFormat(data.due.reduce((acc, { y }) => acc + y, 0))}
           </dt>
           <dd className="font-medium dark:text-dark-6">Year Average Price</dd>
         </div>

@@ -1,5 +1,5 @@
 export async function getDevicesUsedData(
-  timeFrame?: "monthly" | "yearly",
+  timeFrame?: string | undefined
 ) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
