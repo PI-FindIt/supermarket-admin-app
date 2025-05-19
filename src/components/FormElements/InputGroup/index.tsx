@@ -62,7 +62,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
           className={cn(
             "w-full rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition focus:border-primary disabled:cursor-default disabled:bg-gray-2 data-[active=true]:border-primary",
             type === "file"
-              ? getFileStyles(props.fileStyleVariant!)
+              ? getFileStyles(props.fileStyleVariant ?? "style1")
               : "px-5.5 py-3 text-dark placeholder:text-dark-6",
             props.iconPosition === "left" && "pl-12.5",
             props.height === "sm" && "py-2.5",
