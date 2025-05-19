@@ -1,43 +1,60 @@
 "use client";
 
-import { Mail, KeyRound } from "lucide-react";
+import { Mail, KeyRound, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
-import { Select }  from "../FormElements/select";
+import { Select } from "../FormElements/select";
 import Image from "next/image";
 import FindItAdmin from "@/assets/logos/FindItAdmin.png";
 
 export default function SigninWithPassword() {
   const router = useRouter();
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [selectedStore, setSelectedStore] = useState("");
 
-  const [data, setData] = useState({
-    email: process.env.NEXT_PUBLIC_DEMO_USER_MAIL ?? "",
-    password: process.env.NEXT_PUBLIC_DEMO_USER_PASS ?? "",
-    remember: false,
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
   });
 
-  const [loading] = useState(false);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setData({
-      ...data,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
+    setError("");
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
+  const handleStoreSelect = (value: string) => {
+    setSelectedStore(value);
+    setError("");
+  };
 
-    // Dummy validation
-    if (email === "admin@gmail.com" && password === "admin") {
-      router.push("/dashboard");
-    } else {
-      setError("Invalid email or password");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!formData.email || !formData.password) {
+      setError("Please fill in all fields");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      if (formData.email === "osvaldo@gmail.com" && formData.password === "admin") {
+        localStorage.setItem("selectedStore", selectedStore);
+        router.push("/dashboard");
+      } else {
+        setError("Invalid email or password");
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again.");
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,6 +93,7 @@ export default function SigninWithPassword() {
             ]}
             placeholder="Choose Supermarket"
             className="mb-4"
+            onChange={handleStoreSelect}
           />
 
           <InputGroup
@@ -85,7 +103,7 @@ export default function SigninWithPassword() {
             placeholder="Username"
             name="email"
             handleChange={handleChange}
-            value={data.email}
+            value={formData.email}
             icon={<Mail />}
           />
 
@@ -96,7 +114,7 @@ export default function SigninWithPassword() {
             placeholder="Password"
             name="password"
             handleChange={handleChange}
-            value={data.password}
+            value={formData.password}
             icon={<KeyRound />}
           />
 
@@ -109,11 +127,16 @@ export default function SigninWithPassword() {
           <div className="mb-4.5">
             <button
               type="submit"
-              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-orange-400 to-pink-500 p-4 font-bold text-white transition hover:opacity-90"
+              disabled={loading}
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-orange-400 to-pink-500 p-4 font-bold text-white transition hover:opacity-90 disabled:opacity-50"
             >
-              Log-in
-              {loading && (
-                <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-white border-t-transparent" />
+              {loading ? (
+                <>
+                  Logging in...
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                </>
+              ) : (
+                "Log-in"
               )}
             </button>
           </div>
