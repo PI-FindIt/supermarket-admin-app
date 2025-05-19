@@ -18,7 +18,7 @@ export default function StoreLayout({ className }: Readonly<StoreLayoutProps>) {
       </div>
 
       <div className="grid place-items-center gap-4">
-        <div className="relative h-[400px] w-full max-w-[800px]">
+        <div className="relative w-[600px] h-[300px] rounded-2xl border-2 border-orange-500 overflow-hidden">
           <Image
             src={layoutImage}
             alt="Store Layout"
@@ -30,7 +30,7 @@ export default function StoreLayout({ className }: Readonly<StoreLayoutProps>) {
         </div>
 
         <Link
-          href="/"
+          href="/storeLayout"
           className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-2.5 text-white hover:bg-primary/90"
         >
           Details

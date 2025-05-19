@@ -17,6 +17,7 @@ export const NAV_DATA = [
       {
         title: "Layout",
         icon: Lucide.LayoutGrid,
+        url: "/storeLayout",
         items: [],
       },
       {
