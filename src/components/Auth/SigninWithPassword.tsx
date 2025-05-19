@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
 import { Select }  from "../FormElements/select";
 import Image from "next/image";
+import FindItAdmin from "@/assets/logos/FindItAdmin.png";
 
 export default function SigninWithPassword() {
   const router = useRouter();
@@ -52,8 +53,16 @@ export default function SigninWithPassword() {
             className="mb-6"
           />
 
-          <h2 className="text-2xl font-bold text-dark ">
-            Admin Log-in
+          <Image
+            src={FindItAdmin}
+            alt="FindItAdmin"
+            width={289}
+            height={61}
+            className="mb-6"
+          />
+
+          <h2 className="text-xl font-bold text-dark pt-12">
+            Log-in
           </h2>
         </div>
 
