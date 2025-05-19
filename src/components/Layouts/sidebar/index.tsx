@@ -6,10 +6,14 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV_DATA } from "./data";
-import { ArrowLeftIcon, ChevronUp } from "./icons";
 import { MenuItem } from "./menu-item";
 import { useSidebarContext } from "./sidebar-context";
-import * as Lucide from "lucide-react";
+import { ChevronUp, ArrowLeft, LogOut } from "lucide-react";
+
+interface MenuItem {
+  title: string;
+  url?: string;
+}
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -41,6 +45,8 @@ export function Sidebar() {
     router.push("/");
   };
 
+
+  // @ts-ignore
   return (
     <>
       {isMobile && isOpen && (
@@ -77,7 +83,7 @@ export function Sidebar() {
                 className="absolute left-3/4 right-4.5 top-1/2 -translate-y-1/2 text-right"
               >
                 <span className="sr-only">Close Menu</span>
-                <ArrowLeftIcon className="ml-auto size-7" />
+                <ArrowLeft className="ml-auto size-7" />
               </button>
             )}
           </div>
@@ -139,8 +145,8 @@ export function Sidebar() {
                         <MenuItem
                           className="flex items-center gap-3 py-3"
                           as="link"
-                          href={'url' in item ? item.url : "/" + item.title.toLowerCase().split(" ").join("-")}
-                          isActive={pathname === ('url' in item ? item.url : "/" + item.title.toLowerCase())}
+                          href={('url' in item && item.url) ? item.url : "/" + item.title.toLowerCase().split(" ").join("-")}
+                          isActive={pathname === (('url' in item && item.url) ? item.url : "/" + item.title.toLowerCase())}
                         >
                           <item.icon
                             className="size-6 shrink-0"
@@ -164,7 +170,7 @@ export function Sidebar() {
               isActive={false}
               onClick={handleLogout}
             >
-              <Lucide.LogOut className="size-6 shrink-0" aria-hidden="true" />
+              <LogOut className="size-6 shrink-0" aria-hidden="true" />
               <span>Log out</span>
             </MenuItem>
           </div>

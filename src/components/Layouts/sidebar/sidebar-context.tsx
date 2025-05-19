@@ -1,7 +1,7 @@
 "use client";
 
 import { useIsMobile } from "@/hooks/use-mobile";
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 type SidebarState = "expanded" | "collapsed";
 
@@ -23,13 +23,12 @@ export function useSidebarContext() {
   return context;
 }
 
-export function SidebarProvider({
-  children,
-  defaultOpen = true,
-}: {
+type SidebarProviderProps = {
   children: React.ReactNode;
   defaultOpen?: boolean;
-}) {
+};
+
+export function SidebarProvider({ children, defaultOpen = true }: Readonly<SidebarProviderProps>) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const isMobile = useIsMobile();
 
@@ -45,16 +44,16 @@ export function SidebarProvider({
     setIsOpen((prev) => !prev);
   }
 
+  const obj = useMemo<SidebarContextType>(() => ({
+    state: isOpen ? "expanded" : "collapsed",
+    isOpen,
+    setIsOpen,
+    isMobile,
+    toggleSidebar,
+  }), [isOpen, isMobile]);
+
   return (
-    <SidebarContext.Provider
-      value={{
-        state: isOpen ? "expanded" : "collapsed",
-        isOpen,
-        setIsOpen,
-        isMobile,
-        toggleSidebar,
-      }}
-    >
+    <SidebarContext.Provider value={obj}>
       {children}
     </SidebarContext.Provider>
   );

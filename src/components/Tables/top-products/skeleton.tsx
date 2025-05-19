@@ -10,6 +10,14 @@ import {
 
 
 export function TopProductsSkeleton() {
+  const skeletonRows = [
+    "skeleton-row-1",
+    "skeleton-row-2",
+    "skeleton-row-3",
+    "skeleton-row-4",
+    "skeleton-row-5"
+  ];
+
   return (
     <div className="rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
       <h2 className="px-4 py-6 text-2xl font-bold text-dark dark:text-white md:px-6 xl:px-9">
@@ -27,8 +35,8 @@ export function TopProductsSkeleton() {
         </TableHeader>
 
         <TableBody>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <TableRow key={i}>
+          {skeletonRows.map((rowId) => (
+            <TableRow key={rowId}>
               <TableCell>
                 <div className="flex items-center gap-3">
                   <Skeleton className="h-10 w-10 rounded" />

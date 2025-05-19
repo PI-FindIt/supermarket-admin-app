@@ -49,12 +49,12 @@ export function TopProducts() {
       <Table>
         <TableHeader>
           <TableRow className="border-t text-base [&>th]:h-auto [&>th]:py-3 sm:[&>th]:py-4.5">
-            <TableHead className="min-w-[120px] pl-5 sm:pl-6 xl:pl-7.5">
-              Product
+            <TableHead className="font-bold min-w-[120px] pl-5 sm:pl-6 xl:pl-7.5">
+              PRODUCT
             </TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Quantity</TableHead>
-            <TableHead className="pr-5 text-right sm:pr-6 xl:pr-7.5">
+            <TableHead className="font-bold">CATEGORY</TableHead>
+            <TableHead className="font-bold">QUANTITY</TableHead>
+            <TableHead className="font-bold pr-5 text-right sm:pr-6 xl:pr-7.5">
               EAN
             </TableHead>
           </TableRow>

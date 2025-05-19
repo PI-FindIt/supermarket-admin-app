@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "./icons";
+import { Moon, Sun } from "lucide-react";
 
 const THEMES = [
   {

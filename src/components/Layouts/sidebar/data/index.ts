@@ -24,12 +24,6 @@ export const NAV_DATA = [
         icon: Lucide.FilePlus2,
         items: [],
       },
-      {
-        title: "Account settings",
-        url: "/profile",
-        icon: Lucide.UserRound,
-        items: [],
-      },
     ],
   },
   {
