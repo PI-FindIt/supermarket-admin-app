@@ -2,10 +2,8 @@
 
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { cn } from "@/lib/utils";
-import { SetStateActionType } from "@/types/set-state-action-type";
 import {
   createContext,
-  type PropsWithChildren,
   useContext,
   useEffect,
   useRef,
@@ -30,10 +28,10 @@ function useDropdownContext() {
 type DropdownProps = {
   children: React.ReactNode;
   isOpen: boolean;
-  setIsOpen: SetStateActionType<boolean>;
+  setIsOpenAction: (value: boolean) => void;
 };
 
-export function Dropdown({ children, isOpen, setIsOpen }: DropdownProps) {
+export function Dropdown({ children, isOpen, setIsOpenAction }: DropdownProps) {
   const triggerRef = useRef<HTMLElement>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -45,11 +43,9 @@ export function Dropdown({ children, isOpen, setIsOpen }: DropdownProps) {
   useEffect(() => {
     if (isOpen) {
       triggerRef.current = document.activeElement as HTMLElement;
-
       document.body.style.pointerEvents = "none";
     } else {
       document.body.style.removeProperty("pointer-events");
-
       setTimeout(() => {
         triggerRef.current?.focus();
       }, 0);
@@ -57,11 +53,11 @@ export function Dropdown({ children, isOpen, setIsOpen }: DropdownProps) {
   }, [isOpen]);
 
   function handleClose() {
-    setIsOpen(false);
+    setIsOpenAction(false);
   }
 
   function handleOpen() {
-    setIsOpen(true);
+    setIsOpenAction(true);
   }
 
   return (
@@ -132,8 +128,3 @@ export function DropdownTrigger({ children, className }: DropdownTriggerProps) {
   );
 }
 
-export function DropdownClose({ children }: PropsWithChildren) {
-  const { handleClose } = useDropdownContext();
-
-  return <div onClick={handleClose}>{children}</div>;
-}

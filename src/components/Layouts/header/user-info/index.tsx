@@ -14,6 +14,10 @@ import { LogOut, Settings, ChevronUp } from 'lucide-react';
 export function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const setIsOpenAction = (value: boolean) => {
+    setIsOpen(value);
+  }
+
   const USER = {
     name: "Osvaldo",
     email: "osvaldo@gmail.com",
@@ -21,7 +25,7 @@ export function UserInfo() {
   };
 
   return (
-    <Dropdown isOpen={isOpen} setIsOpen={setIsOpen}>
+    <Dropdown isOpen={isOpen} setIsOpenAction={setIsOpenAction}>
       <DropdownTrigger className="rounded align-middle outline-none ring-primary ring-offset-2 focus-visible:ring-1 dark:ring-offset-gray-dark">
         <span className="sr-only">My Account</span>
 
